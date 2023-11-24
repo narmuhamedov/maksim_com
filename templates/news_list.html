@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="center-btn-block">
+    <div class="btn-create">
+        <button><a href="/create_news/">Создать новость</a></button>
+    </div>
+</div>
+<div class="news-block">
+    <h1>Все новости</h1>
+    <ul>
+        {% for i in object_list %}
+        <li>
+            <h2>{{i.title}}</h2>
+            <img src='{{i.image.url}}' width='250px' height='200' alt="">
+            <br>
+            <button><a href="/news_list/{{i.id}}/">Подробнее</a></button>
+            <button><a href="/news_list/{{i.id}}/delete/">Удалить</a></button>
+            <button><a href="/news_list/{{i.id}}/update/">Изменить</a></button>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
